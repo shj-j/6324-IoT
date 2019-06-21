@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Server Page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <ul id="slide-out" class="sidenav">
+        <li><a class="subheader">      </a></li>
+        <li><a class="subheader">Transactions</a></li>
+        <li><a href="#!" class="waves-effect sidenav-close" id="add-trx-btn"><i class="material-icons">shopping_cart</i>Add Transaction</a></li>
+        <li><a href="#!" class="waves-effect sidenav-close" id="curr-order-btn"><i class="material-icons">assignment</i>Current Order</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Admin</a></li>
+        <li><a class="waves-effect sidenav-close" onclick="restock()"><i class="material-icons">refresh</i>Restock Items</a></li>
+        <li><a class="waves-effect sidenav-close"><i class="material-icons">settings</i>Settings</a></li>
+        <li><a class="waves-effect sidenav-close" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large" id="menu-trigger-btn"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <main role="main">
+        <div class="container" id="main">
+            <div id="transaction-page">
+                <div class="row">
+                    <h4>Foods</h4>
+                    <div class="row">
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/hot_dog.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Hot Dog</span> 
+                                    <h4 align="center" id="val-hot-dog">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#/" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#/" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/burger.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Burger</span>
+                                    <h4 align="center" id="val-burger">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/fries.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Fries</span>
+                                    <h4 align="center" id="val-fries">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="divider"></div>
+                    <h4>Drinks</h4>
+                    <div class="row">
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/water_600ml.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Water 600ml</span>
+                                    <h4 align="center" id="val-water">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/coca_cola_600ml.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Coca Cola 600ml</span>
+                                    <h4 align="center" id="val-coke">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/fanta_600ml.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Fanta 600ml</span>
+                                    <h4 align="center" id="val-fanta">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/sprite_600ml.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Sprite 600ml</span>
+                                    <h4 align="center" id="val-sprite">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/Orange_Juice_350ml.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Orange Juice 600ml</span>
+                                    <h4 align="center" id="val-orange">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <h4>Snacks</h4>
+                    <div class="row">
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/snickers.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Snickers</span>
+                                    <h4 align="center" id="val-snickers">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/jelly_babies.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Jelly Babies</span>
+                                    <h4 align="center" id="val-jelly">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/smiths_original.jpg">
+                                    <span class="card-title">Salt and Vinegar Chips</span>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Salt and Vinegar Chips</span>
+                                    <h4 align="center" id="val-smiths-original">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/smiths_bbq.jpg">
+                                    
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">BBQ Chips</span>
+                                    <h4 align="center" id="val-smiths-bbq">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#/" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#/" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s4 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="images/doritos_cheese.jpg">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">Cheese Corn Chips</span>
+                                    <h4 align="center" id="val-doritos">0</h4>
+                                </div>
+                                <div class="card-action" align="center">
+                                    <a href="#!" onclick="addValue(this)"><i class="material-icons">arrow_upward</i></a>
+                                    <a href="#!" onclick="decreaseValue(this)"><i class="material-icons">arrow_downward</i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="divider"></div>
+                    <br><br>
+                    <div class="input-field col s3 push-s9">
+                        <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="debit_card">Debit Card</option>
+                        <option value="cash">Cash</option>
+                        <option value="afterpay">Afterpay</option>
+                        </select>
+                        <label>Payment Method</label>
+                    </div>
+                    <br><br><br><br><br>
+                    <a class="waves-effect waves-light btn col s3 push-s9" id="trx-submit-btn"><i class="material-icons left">shopping_cart</i>Add Transaction</a>
+
+                </div>
+            </div>
+
+            <div id="order-page" class="hidden">
+                <div class="row">
+                    <h4>Current Order</h4>
+                    <br>
+                    <div class="divider"></div>
+                    <div id="order-list">
+                        <!----Placeholder for Orders (Req-7 & Req-8)----->
+                        <div class="col s12 m12 l12" id="curr-order">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <div id="login-form" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s6 offset-s3">
+                    <input placeholder="Server ID" id="server_id" type="text" class="validate">
+                    <label for="server_id">Input your Server ID</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="waves-effect waves-light btn" onclick="login()">Login</a>
+        </div>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/handler-server.js"></script>
+  </body>
+</html>

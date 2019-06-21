@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <script type="text/javascript" src="js/login-checker.js"></script>
+    <ul id="orders" class="dropdown-content">
+        <!---<li id="no-order">No active orders</li>-->
+        <ul class="collection">
+            <li class="collection-item">
+                <li class="orders" id="curr-order">
+                    
+                </li>
+            </li>
+        </ul>
+    </ul>
+      
+    <nav>
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="right">
+                <li class="left"><a href="#/" onclick="logout()">Logout</a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="orders"><i class="material-icons">assignment</i></a></li>
+                <li><a class="sidenav-trigger show-on-large" href="#!" data-target="basket-nav"><i class="material-icons">shopping_cart</i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="basket-nav" class="sidenav">
+        <li><a class="subheader">      </a></li>
+        <li><a class="subheader">Cart</a></li>
+        <li><div class="divider"></div></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="hotdog-count">0</span>x   Hot Dog</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="burger-count">0</span>x   Burger</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="fries-count">0</span>x   Fries</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="snickers-count">0</span>x   Snickers</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="jelly-count">0</span>x   Jelly Babies</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="salt-chips-count">0</span>x   Salt & Vinegar Chips</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="bbq-chips-count">0</span>x   BBQ Chips</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="cheese-chips-count">0</span>x   Cheese Corn Chips</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="water-count">0</span>x   Bottled Water 600ml</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="coke-count">0</span>x   Coca Cola 600ml</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="fanta-count">0</span>x   Fanta 600ml</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="sprite-count">0</span>x   Sprite 600ml</a></li>
+        <li class="hidden"><a class="waves-effect cart-item" onclick="removeItem(this)"><span class="cart-item-count" id="orange-count">0</span>x   Orange Juice 350ml</a></li>
+
+        <li>
+            <div class="input-field">
+                <input placeholder="Order Note" id="order-note" type="text">
+                <label for="order-note">Order Note</label>
+            </div>
+        </li>
+        <li><a class="waves-effect waves-light btn" id="buy-btn" onclick="buyItems()"><i class="material-icons left">shopping_cart</i>Buy</a></li>
+    </ul>
+    
+    <main role="main">
+        <div class="container">
+            <h4>Hot Food</h4>
+            <div class="row">
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/hot_dog.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Hot Dog</h5>
+                                <p>Hot Dog with sauce and mustard</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('hotdog-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/burger.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Burger</h5>
+                                <p>Burger with beef pattie, lettuce, tomato</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('burger-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/fries.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Fries</h5>
+                                <p>Hot potato chips</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('fries-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <h4>Snacks</h4>
+            <div class="row">
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/snickers.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Snickers</h5>
+                                <p>Snickers chocolate bar</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('snickers-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/jelly_babies.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Jelly Babies</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('jelly-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/smiths_original.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Salt and Vinegar Chips</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('salt-chips-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/smiths_bbq.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>BBQ Chips</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('bbq-chips-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/doritos_cheese.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Cheese Corn Chips</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('cheese-chips-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <h4>Drinks</h4>
+            <div class="row">
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/water_600ml.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Bottled Water 600ml</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('water-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/coca_cola_600ml.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Coca Cola 600ml</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('coke-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/fanta_600ml.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Fanta 600ml</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('fanta-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/sprite_600ml.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Sprite 600ml</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('sprite-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                        <img src="images/Orange_Juice_350ml.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Orange Juice 350ml</h5>
+                            </div>
+                            <div class="card-action">
+                                <a href="#/" onclick="addToCart('orange-count')">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-----Login Modal (Req-4)-->
+    <div id="login-form" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s6 offset-s3">
+                    <input placeholder="Username" id="username" type="text" class="validate">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field col s6 offset-s3">
+                    <input placeholder="Password" id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <br>
+            <h5 class="hidden col s12" id="fail-message-login" align="center">Login Failed</h5>
+            <br>
+            
+        </div>
+        <div class="modal-footer">
+            <a class="waves-effect waves-light btn" onclick="login()">Login</a>
+        </div>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/handler-user.js"></script>
+  </body>
+</html>
